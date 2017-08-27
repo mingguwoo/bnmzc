@@ -1,0 +1,8 @@
+*.git
+.gitignore
+*.target/
+*.iml
+*.test
+.idea
+*.class
+*.settings/
