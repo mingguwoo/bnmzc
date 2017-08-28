@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 /**
  * Created by wuminggu on 2017/8/28.
  */
-@Service("DemoService")
+@Service("demoService")
 public class DemoServiceImpl implements DemoService {
     private static final Logger LOGGER = LoggerFactory.getLogger(DemoServiceImpl.class);
 

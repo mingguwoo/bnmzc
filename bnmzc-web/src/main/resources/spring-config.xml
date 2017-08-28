@@ -12,4 +12,11 @@
         <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
     </context:component-scan>
 
+    <import resource="spring-config-aop.xml"/>
+    <import resource="spring-config-dao.xml"/>
+    <import resource="spring-config-interceptor.xml"/>
+    <import resource="spring-config-mvc.xml"/>
+    <import resource="spring-config-quartz.xml"/>
+    <import resource="spring-config-service.xml"/>
+
 </beans>

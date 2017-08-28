@@ -6,5 +6,5 @@ import com.woo.domain.Result;
  * Created by wuminggu on 2017/8/28.
  */
 public interface DemoService {
-    public Result getDemoResult();
+    Result getDemoResult();
 }
