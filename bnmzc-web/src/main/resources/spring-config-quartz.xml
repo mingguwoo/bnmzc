@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd"
+       default-autowire="byName">
+
+    <!-- 调度定时任务 -->
+    <bean id="serviceGetAvailConfigQuartz" class="org.springframework.scheduling.quartz.SchedulerFactoryBean" autowire="no">
+        <property name="triggers">
+            <list>
+                <ref bean="demoJobTrigger" />
+            </list>
+        </property>
+        <property name="autoStartup" value="true" />
+        <property name="quartzProperties">
+            <props>
+                <prop key="org.quartz.threadPool.threadCount">1</prop>
+            </props>
+        </property>
+    </bean>
+
+    <!-- demo定时任务-->
+    <bean id="demoJobService" class="com.woo.service.job.DemoJobService"></bean>
+    <bean id="demoJobDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+        <property name="targetObject" ref="demoJobService"/>
+        <property name="targetMethod" value="execute"/>
+        <property name="concurrent" value="false"></property>
+    </bean>
+    <bean id="demoJobTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
+        <property name="jobDetail" ref="demoJobDetail"/>
+        <property name="cronExpression" value="0 0 */1 * * ?"/>
+    </bean>
+</beans>
