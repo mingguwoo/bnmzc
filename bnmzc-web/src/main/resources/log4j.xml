@@ -1,21 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
 <log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
-	<appender name="CONSOLE" class="org.apache.log4j.ConsoleAppender">
+    <appender name="CONSOLE" class="org.apache.log4j.ConsoleAppender">
+        <param name="Threshold" value="INFO"/>
+        <param name="Target" value="System.out"/>
+        <param name="ImmediateFlush" value="true"/>
         <layout class="org.apache.log4j.PatternLayout">
             <param name="ConversionPattern" value="[%7r] %6p - %30.30c - %m \n"/>
         </layout>
     </appender>
-    <appender name="FILE-DEBUG" class="org.apache.log4j.FileAppender">
+    <!--<appender name="FILE-DEBUG" class="org.apache.log4j.FileAppender">
         <param name="Append" value="false"/>
         <param name="file" value="${serverside.log.path}/serverside.log"/>
         <layout class="org.apache.log4j.PatternLayout">
             <param name="ConversionPattern" value="%d [%7r] %6p - %30.30c - %m \n"/>
         </layout>
     </appender>
+    <appender name="FILE" class="org.apache.log4j.DailyRollingFileAppender">
+        <param name="Threshold" value="INFO"/>
+        <param name="ImmediateFlush" value="true"/>
+        <param name="Append" value="false"/>
+        <param name="DatePattern" value="'.'yyyy-MM-dd" />
+        <param name="file" value="${serverside.log.path}/serverside.log"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d [%7r] %6p - %30.30c - %m \n"/>
+        </layout>
+    </appender>-->
+    <appender name="FILE" class="org.apache.log4j.RollingFileAppender">
+        <param name="Threshold" value="INFO"/>
+        <param name="ImmediateFlush" value="true"/>
+        <param name="Append" value="false"/>
+        <param name="MaxFileSize" value="100MB"/>
+        <param name="MaxBackupIndex" value="100"/>
+        <param name="file" value="${serverside.log.path}/serverside.log"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d [%7r] %6p - %30.30c - %m \n"/>
+        </layout>
+        <filter class="org.apache.log4j.varia.LevelRangeFilter">
+            <param name="LevelMin" value="${serverside.log.level}" />
+            <!--<param name="LevelMax" value="FATAL "/> -->
+        </filter>
+    </appender>
+
     <root>
         <priority value="${serverside.log.level}"/>
         <appender-ref ref="CONSOLE"/>
-        <appender-ref ref="FILE-DEBUG"/>
+        <appender-ref ref="FILE"/>
+        <!--<appender-ref ref="FILE-DEBUG"/>-->
     </root>
 </log4j:configuration>
