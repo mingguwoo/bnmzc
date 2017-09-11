@@ -7,9 +7,23 @@
         <groupId>com.woo.bnmzc</groupId>
         <artifactId>bnmzc</artifactId>
         <version>1.0-SNAPSHOT</version>
+        <relativePath>..</relativePath>
     </parent>
     <artifactId>bnmzc-common</artifactId>
     <name>bnmzc-common</name>
 
+    <dependencies>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>servlet-api</artifactId>
+            <version>2.4</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-validator</artifactId>
+            <version>4.2.0.Final</version>
+        </dependency>
+    </dependencies>
 
 </project>
