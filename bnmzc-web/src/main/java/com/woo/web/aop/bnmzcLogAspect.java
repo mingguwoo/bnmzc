@@ -19,7 +19,7 @@ import java.util.List;
 public class bnmzcLogAspect {
     private final Logger LOGGER = LoggerFactory.getLogger(bnmzcLogAspect.class);
 
-    @After("execution(public * com.jd.assignments.dao..*.*(..))")
+    @After("execution(public * com.woo.dao.*.*(..))")
     public void afterLog(JoinPoint jp) throws Throwable {
         try {
             String className = jp.getTarget().getClass().getName();

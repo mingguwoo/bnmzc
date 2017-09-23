@@ -10,6 +10,6 @@
 
     <aop:aspectj-autoproxy/>
 
-    <bean class="com.woo.web.aop.AssignmentLogAspect"/>
+    <bean class="com.woo.web.aop.bnmzcLogAspect"/>
 
 </beans>

@@ -5,6 +5,6 @@
 <mapper namespace="Demo">
 
     <select id="getDemoResult" resultType="java.lang.Integer">
-        SELECT count(*) FROM cms_discovery_assignment_applicant_map
+        SELECT COUNT(*) FROM ke_user
     </select>
 </mapper>
